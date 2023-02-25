@@ -1,17 +1,19 @@
 
-package com.example.movietracker;
+package com.example.movietracker.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
+import com.example.movietracker.Fragments.Homefragment;
+import com.example.movietracker.Fragments.ProfileFragment;
+import com.example.movietracker.R;
+import com.example.movietracker.Fragments.TrackerFragment;
+import com.example.movietracker.ViewPageradapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;

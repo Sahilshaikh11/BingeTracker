@@ -1,19 +1,15 @@
-package com.example.movietracker;
+package com.example.movietracker.Fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import com.example.movietracker.R;
 
 /**
  * A simple {@link Fragment} subclass.

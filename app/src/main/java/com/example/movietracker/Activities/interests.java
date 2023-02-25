@@ -1,9 +1,13 @@
-package com.example.movietracker;
+package com.example.movietracker.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.GridView;
+
+import com.example.movietracker.GridModelClass;
+import com.example.movietracker.R;
+import com.example.movietracker.myGridAdapter;
 
 import java.util.ArrayList;
 

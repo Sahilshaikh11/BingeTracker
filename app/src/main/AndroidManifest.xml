@@ -6,35 +6,35 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo"
-        android:label="Tracker"
+        android:icon="@drawable/binge_tracker"
+        android:label="Binge Tracker"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieTracker"
         tools:targetApi="31">
         <activity
-            android:name=".DetailedActivity"
+            android:name=".Activities.DetailedActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".profileSetting"
+            android:name=".Activities.profileSetting"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".interests"
+            android:name=".Activities.interests"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Splash"
+            android:name=".Activities.Splash"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -48,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"

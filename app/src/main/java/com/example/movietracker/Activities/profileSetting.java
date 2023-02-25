@@ -1,8 +1,10 @@
-package com.example.movietracker;
+package com.example.movietracker.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.movietracker.R;
 
 public class profileSetting extends AppCompatActivity {
 

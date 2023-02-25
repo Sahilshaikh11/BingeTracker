@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Homefragment"
+    tools:context=".Fragments.Homefragment"
     android:background="@drawable/bg">
 
 
@@ -34,7 +34,7 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="170dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Trending Now!"
+        android:text="Top Charts on IMDB!"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
