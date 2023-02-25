@@ -1,198 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    android:clipToPadding="false"
+    android:scrollbars="none"
+    tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="150dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="75dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageviewProfile"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/avatar_profile" />
+        <!-- Pfp -->
+        <FrameLayout
+            android:id="@+id/layoutimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp">
 
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imageProfile"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:background="@drawable/background_image"
+                android:src="@drawable/football_icon"
+                android:scaleType="centerCrop" />
+
+
+        </FrameLayout>
+
+        <!-- Username -->
         <TextView
-            android:id="@+id/textviewProfile"
+            android:id="@+id/username"
+            style="@android:style/Widget.TextView.PopupMenu"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@+id/imageviewProfile"
-            android:textAlignment="center"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="0dp"
-            android:text=""
-            android:textSize="18sp" />
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/progress_layout"
-        android:layout_width="110dp"
-        android:layout_height="101dp"
-        android:layout_margin="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/textviewInterest"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
-
-        <!--progress bar implementation-->
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/circular_shape"
-            android:indeterminate="false"
-            android:progressDrawable="@drawable/circular_progress_bar"
-            android:textAlignment="center"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/progress_text"
-            android:layout_width="39dp"
-            android:layout_height="41dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="35dp"
-            android:layout_marginBottom="30dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
             android:gravity="center"
-            android:text="---"
-            android:textColor="#9f1b0b"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
-            app:layout_constraintEnd_toEndOf="@+id/progress_bar"
-            app:layout_constraintStart_toStartOf="@+id/progress_bar" />
+            android:text="@string/name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
-        <!--Text implementation in center of the progress bar-->
-    </RelativeLayout>
+        <!--        Gamifying Section-->
+        <LinearLayout
+            android:id="@+id/gamify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="10dp">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="365dp" />
+            <ImageView
+                android:id="@+id/badge_container"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/level" />
 
-    <TextView
-        android:id="@+id/textviewInterest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="298dp"
-        android:layout_marginBottom="19dp"
-        android:text="Interests"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonOneInterest"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonSixInterest"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="16dp"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonFiveInterest" />
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:max="100"
+                    android:paddingTop="50dp"
+                    android:progress="75" />
 
-    <Button
-        android:id="@+id/buttonFiveInterest"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="10dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonThreeInterest" />
+                <TextView
+                    android:id="@+id/level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Level 1"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
 
-    <Button
-        android:id="@+id/buttonFourInterest"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginEnd="34dp"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonThreeInterest"
-        tools:layout_editor_absoluteY="490dp" />
-
-    <Button
-        android:id="@+id/buttonThreeInterest"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="10dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonOneInterest" />
-
-    <Button
-        android:id="@+id/buttonOneInterest"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="34dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="423dp" />
-
-    <Button
-        android:id="@+id/buttonTwoInterest"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="34dp"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonOneInterest"
-        tools:layout_editor_absoluteY="423dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="640dp" />
-
-    <Button
-        android:id="@+id/profileSettingButton"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Profile Setting"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="1.0" />
+            </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <!-- Line Image 1 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp">
+
+            <ImageView
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line" />
+
+        </FrameLayout>
+
+        <!-- Interests Section -->
+
+        <!-- Line Image 2 -->
+        <RelativeLayout
+            android:layout_width="411dp"
+            android:layout_height="339dp"
+            android:layout_marginLeft="20dp">
+
+            <!-- Interests Text  -->
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest12"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/interest4"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="127dp"
+                android:layout_toEndOf="@id/interest1"
+                android:background="@drawable/background_interests"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest11"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/interest3"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="126dp"
+                android:background="@drawable/background_interests"
+                android:padding="15dp"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest7"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/interest4"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="66dp"
+                android:layout_toEndOf="@id/interest1"
+                android:background="@drawable/background_interests"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/interest3"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="67dp"
+                android:background="@drawable/background_interests"
+                android:padding="15dp"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <!--Interests1-->
+            <TextView
+                android:id="@+id/InterestsTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:layout_marginLeft="20dp"
+                android:text="Genres"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest1"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/InterestsTxt"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/background_interests"
+                android:padding="15dp"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <!--Interests2-->
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest2"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/InterestsTxt"
+                android:layout_marginStart="25dp"
+                android:layout_toEndOf="@id/interest1"
+                android:background="@drawable/background_interests"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <!--Interests3-->
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest3"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/interest1"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_interests"
+                android:padding="15dp"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <!--Interests4-->
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest4"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/interest2"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/interest1"
+
+                android:background="@drawable/background_interests"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <!--Interests5-->
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest5"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/interest3"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_interests"
+                android:padding="15dp"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <!--Interests6-->
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/interest6"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/interest4"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/interest1"
+                android:background="@drawable/background_interests"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp">
+
+            <ImageView
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/line" />
+
+        </FrameLayout>
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@color/purple_700"
+            android:text="Profile Setting"
+            android:textColor="@color/black"
+            app:cornerRadius="50dp"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

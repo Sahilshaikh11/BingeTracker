@@ -1,6 +1,7 @@
 package com.example.movietracker;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -18,79 +19,33 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.HorizontalScrollView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Homefragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Homefragment extends android.app.Fragment {
 
-    RecyclerView recyclerView;
-    Integer[] image={R.drawable.soccer_football_icon,R.drawable.football_icon,
-            R.drawable.soccer_football_icon,R.drawable.football_icon,
-            R.drawable.soccer_football_icon,R.drawable.football_icon,
-            R.drawable.soccer_football_icon,R.drawable.football_icon,
-            R.drawable.soccer_football_icon,R.drawable.football_icon,
-            R.drawable.soccer_football_icon,R.drawable.football_icon,
-            R.drawable.soccer_football_icon,R.drawable.football_icon,
-            R.drawable.soccer_football_icon,R.drawable.football_icon,
-            R.drawable.soccer_football_icon,R.drawable.football_icon,
-            R.drawable.soccer_football_icon,R.drawable.football_icon};
-    String[] name={"1","2","1","2","1","2","1","2","1","2","1","2",
-            "1","2","1","2","1","2","1","2",};
-    LinearLayoutManager linearLayoutManager;
-    cardAdapter cardAdapter;
+public class Homefragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+   GridView gridView;
+    String[] itemname = {"The Shawshank Redemption (1994)"," The Godfather (1972)","The Dark Knight (2008)","The Godfather Part II (1974)",
+    "12 Angry Men (1957)","Schindler's List (1993)"," The Lord of the Rings: The Return of the King (2003)"," Pulp Fiction (1994)",
+    " The Lord of the Rings: The Fellowship of the Ring (2001)"," The Good, the Bad and the Ugly (1966)"," Forrest Gump (1994)","Fight Club (1999)",
+    " The Lord of the Rings: The Two Towers (2002)","Inception (2010)","Star Wars: Episode V - The Empire Strikes Back (1980)","The Matrix (1999)",
+    "Goodfellas (1990)","One Flew Over the Cuckoo's Nest (1975)","Se7en (1995)","Seven Samurai (1954)",
+    "It's a Wonderful Life (1946)","The Silence of the Lambs (1991)","City of God (2002)","Saving Private Ryan (1998)"};
+    Integer[] itemimage = {R.drawable.one,R.drawable.two,R.drawable.three,R.drawable.four,R.drawable.five,R.drawable.six,R.drawable.seven,
+            R.drawable.eight,R.drawable.nine,R.drawable.ten,R.drawable.eleven,R.drawable.twelve,R.drawable.thirteen,R.drawable.fourteen,
+            R.drawable.fifteen,R.drawable.sixteen,R.drawable.seventeen,R.drawable.eighteen,R.drawable.nineteen,R.drawable.twenty,R.drawable.twentyone,
+            R.drawable.twentytwo,R.drawable.twentythree,R.drawable.twentyfour};
 
     public Homefragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Homefragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Homefragment newInstance(String param1, String param2) {
-        Homefragment fragment = new Homefragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        setHasOptionsMenu(true);
-
-    }
-
-    public void setContentView(int fragment_homefragment) {
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,24 +53,22 @@ public class Homefragment extends android.app.Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_homefragment, container, false);
     }
-
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
-        setContentView(R.layout.fragment_homefragment);
-        recyclerView = recyclerView.findViewById(R.id.recyclerView);
-
-        linearLayoutManager = new LinearLayoutManager((Activity) getContext(),LinearLayoutManager.HORIZONTAL,false);
-        cardAdapter = new cardAdapter(image,name);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(cardAdapter);
-
         super.onActivityCreated(savedInstanceState);
+        gridView = getView().findViewById(R.id.gridview);
+        GridviewAdapter mycustomGridviewAdapter = new GridviewAdapter((Activity) getContext(), itemimage, itemname);
+        gridView.setAdapter(mycustomGridviewAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(), DetailedActivity.class);
+                intent.putExtra("name", itemname[i]);
+                intent.putExtra("poster",itemimage[i]);
+                startActivity(intent);
+            }
+        });
     }
 
-
-    public void onPointerCaptureChanged(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-    }
 }

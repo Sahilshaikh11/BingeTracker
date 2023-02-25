@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +20,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends android.app.Fragment {
+public class ProfileFragment extends Fragment {
 
-    ProgressBar progressBar;
-    TextView progressText;
-    int i = 0;
-    CircleImageView profileImageView;
-    TextView profileText,interests;
-    Button interestsButton1, interestsButton2,interestsButton3,interestsButton4,
-            interestsButton5,interestsButton6, profileSettingButton;
+    private PreferenceManager preferenceManager;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -75,38 +70,6 @@ public class ProfileFragment extends android.app.Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        // Inflate the layout for this fragment
-
-        progressBar = rootView.findViewById(R.id.progress_bar);
-        progressText = rootView.findViewById(R.id.progress_text);
-        profileImageView = rootView.findViewById(R.id.imageviewProfile);
-        profileText = rootView.findViewById(R.id.textviewProfile);
-        interestsButton1 = rootView.findViewById(R.id.buttonOneInterest);
-        interestsButton2 = rootView.findViewById(R.id.buttonTwoInterest);
-        interestsButton3 = rootView.findViewById(R.id.buttonThreeInterest);
-        interestsButton4 = rootView.findViewById(R.id.buttonFourInterest);
-        interestsButton5 = rootView.findViewById(R.id.buttonFiveInterest);
-        interestsButton6 = rootView.findViewById(R.id.buttonSixInterest);
-        profileSettingButton = rootView.findViewById(R.id.profileSettingButton);
-
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // set the limitations for the numeric
-                // text under the progress bar
-                if (i <= 100) {
-                    progressText.setText("" + i);
-                    progressBar.setProgress(i);
-                    i++;
-                    handler.postDelayed(this, 200);
-                } else {
-                    handler.removeCallbacks(this);
-                }
-            }
-        }, 200);
-
         return rootView;
     }
 }
